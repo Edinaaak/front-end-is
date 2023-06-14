@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="home-page">
+    <div class="home-image">
+      <nav class="nav justify-content-start" >
+        <a class="nav-link active" [routerLink]="">Home</a>
+        <a class="nav-link" [routerLink]="['schedule']">My Schedule</a>
+        <a class="nav-link" href="#">Reservation</a>
+        <a class="nav-link" href="#">My Profile</a>
+        <a class="nav-link" href="#">User List</a>
+      </nav>
+      <img [src]="imagePath" class="img-fluid" alt="image desc">
+    </div>
+
+    <h2 style="text-align: center;margin: 0px 50px 0px 50px;" class="mt-4 mb-5 ">This platform is designed exclusively for our dedicated team of administrators, drivers, and counter clerk</h2>
+
+    <div class="cards d-flex justify-content-center mb-5">
+
+    <div class="card text-center me-3">
+      <img class="card-img-top" src="/assets/images/setting.png" alt="Title">
+      <div class="card-body">
+        <h4 class="card-title">Admin</h4>
+        <p class="card-text">As an administrator, you'll have access to powerful features that enable you to oversee and optimize the entire transportation network. </p>
+      </div>
+    </div>
+
+    <div class="card text-center me-3">
+      <img class="card-img-top" src="/assets/images/driver.png" alt="Title">
+      <div class="card-body">
+        <h4 class="card-title">Driver</h4>
+        <p class="card-text">For our drivers, we provide a user-friendly interface that allows you to view assigned routes, access real-time updates. </p>
+      </div>
+    </div>
+
+    <div class="card text-center">
+      <img class="card-img-top" src="/assets/images/clerk.png" alt="Title">
+      <div class="card-body">
+        <h4 class="card-title">Counter clerk</h4>
+        <p class="card-text">As a counter clerk, you'll have access to passenger information, ticketing systems, and tools to manage ticket sales and validations. </p>
+      </div>
+    </div>
+    </div>
+
+    <p style="text-align:center;font-style:normal;font-size:x-large;font-weight: lighter; padding: 20px;">We understand the importance of reliability and accuracy in the transportation industry, which is why our platform is built with robust security measures to safeguard sensitive data and ensure seamless operations.
+
+      We value your feedback and are continuously working to improve our platform based on your suggestions and needs. If you have any questions, concerns, or ideas for enhancements, please don't hesitate to reach out to our support team.</p>
+  </div>
+
+  <ul class="list-unstyled">
+      <li class="d-flex">
+          <div class="flex-shrink-0">
+              <img src="/assets/images/employee.png" alt="" width="300">
+          </div>
+          <div class="ms-3">
+              <h5 class="mt-0">650 Employees</h5>
+              <p>The employee demonstrated exceptional professionalism and dedication in delivering  service to our customers.</p>
+          </div>
+      </li>
+      <li class="d-flex">
+          <div class="ms-3">
+              <h5 class="mt-0">245k Services annually</h5>
+              <p>The friendly staff provided helpful directions, ensuring that I reached my destination without any confusion.</p>
+          </div>
+          <div class="flex-shrink-0">
+            <img src="/assets/images/directional-sign.png" alt="" width="">
+        </div>
+      </li>
+      <li class="d-flex">
+          <div class="flex-shrink-0">
+              <img src="/assets/images/bus-stop.png" alt="" width="">
+          </div>
+          <div class="ms-3">
+              <h5 class="mt-0">420 buses</h5>
+              <p>The bus arrived on time, and the comfortable seating and smooth ride made for an enjoyable journey.</p>
+          </div>
+      </li>
+
+      <li class="d-flex">
+        <div class=" ms-3 me-2">
+            <h5 class="mt-0">KMs Travelled annually</h5>
+            <p>The map provided clear and detailed directions, making it easy to navigate and explore the city.</p>
+        </div>
+        <div class="flex-shrink-0">
+          <img src="/assets/images/city-map.png" alt="" width="">
+      </div>
+    </li>
+  </ul>
+
+
+
+
+
+
+
+</body>
+</html>

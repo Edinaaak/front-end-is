@@ -1,0 +1,16 @@
+nav {
+  /* Stilovi za navigaciju */
+  /* Na primer: */
+  background-size: cover;
+  background-position: center;
+  font-size: x-large; 
+  /* Dodatni stilovi po potrebi */
+}
+
+
+.home-page {
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  /* Dodatni stilovi po potrebi */
+}

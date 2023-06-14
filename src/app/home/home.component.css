@@ -1,0 +1,79 @@
+.home-image {
+
+  overflow: hidden;
+  position: relative; /* Postavite relativnu poziciju na element sa slikom */
+  display: inline-block; /* Postavite prikaz na inline-block kako bi se navigacija mogla pozicionirati iznad slike */
+}
+
+.home-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+
+.home-page {
+
+  position: relative; /* Postavite relativnu poziciju na roditeljski element */
+  /* Dodatni stilovi po potrebi */
+}
+
+
+
+nav {
+  position: absolute; /* Postavite apsolutnu poziciju na navigaciju */
+  top: 0; /* Pozicionirajte navigaciju na vrh slike */
+  left: 0; /* Pozicionirajte navigaciju s leve strane slike */
+  z-index: 2; /* Postavite veći z-index da bi navigacija bila iznad slike */
+  background-color: rgba(0, 0, 0, 0.5); /* Opciono: Dodajte boju pozadine navigacije */
+  padding: 10px; /* Opciono: Dodajte razmak oko linkova navigacije */
+  color: white; /* Opciono: Promenite boju teksta navigacije */
+  width: 100%;
+  font-size: x-large;
+
+}
+
+nav a
+{
+  color:white;
+}
+
+.card
+{
+  width: 25%;
+  align-items: center;
+}
+
+.cards
+{
+
+  height: 300px;
+}
+
+.card img
+{
+  margin-top: 10px;
+  width: 40%;
+  height: 50%;
+}
+
+.card img:hover
+{
+  transform: rotate(-20deg);
+}
+
+.list-unstyled img
+{
+  width: 200px;
+  height: 200px;
+}
+
+ul
+{
+  align-items: center;
+}
+
+li{
+  align-items: center;
+  justify-content: center;
+}
