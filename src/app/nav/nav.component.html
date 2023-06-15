@@ -1,7 +1,16 @@
-<nav class="nav justify-content-start mt-2"  [ngClass]="{'home-page': isHomePage}" >
+<nav class="d-flex  "  style="justify-content: space-between;">
+  <ul class="nav justify-content-start d-flex ">
   <a class="nav-link active" [routerLink]="['']">Home</a>
   <a class="nav-link" [routerLink]="['schedule']">My Schedule</a>
-  <a class="nav-link" href="#">Reservation</a>
-  <a class="nav-link" href="#">My Profile</a>
-  <a class="nav-link" href="#">User List</a>
+  <a class="nav-link" [routerLink]="['add-schedule']">Add Schedule</a>
+  <a class="nav-link" [routerLink]="['create-line']">Create Line</a>
+  <a class="nav-link" [routerLink]="['reservation']">Reservation</a>
+  <a class="nav-link" *ngIf="authService.isLoggedIn()">My Profile</a>
+  <a class="nav-link" [routerLink]="['user-list']" routerLinkActive="router-link-active" >User List</a>
+  </ul>
+  <ul class="nav d-flex me-4 mt-1">
+    <button class="me-2" [routerLink]="['register']" *ngIf="!authService.isLoggedIn()">Register</button>
+    <button [routerLink]="['login']" *ngIf="!authService.isLoggedIn()">Login</button>
+    <button *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Logout</button>
+  </ul>
 </nav>

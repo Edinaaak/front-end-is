@@ -1,0 +1,66 @@
+<div class="add-busline-page">
+  <form [formGroup]="formLine">
+    <h3 style="text-align: center;">Add a busline</h3>
+    <!-- <div class="alert alert-success d-flex justify-content-center" *ngIf="added">
+      <div style="text-align: center;">
+        You added successfully the auditorium!
+      </div>
+    </div> -->
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Arrival Time</label>
+      <input type="time" id="form2Example1" class="form-control" formControlName="Arrival" />
+    </div>
+
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Departure Time</label>
+      <input type="time" id="form2Example2" class="form-control" formControlName="Departure" />
+    </div>
+
+
+     <!-- Text input -->
+     <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Platform</label>
+      <input type="textl" id="form2Example2" class="form-control" formControlName="Platform" />
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Day</label>
+      <div class="mb-3">
+        <select class="form-select form-select-lg" name="" id="idDay" (change)="selectDay()">
+          <option selected>Select day</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Direction</label>
+      <input type="text" id="form2Example2" class="form-control" formControlName="Direction" />
+    </div>
+
+    <div class="form-outline mb-4">
+      <div class="mb-3">
+        <label for="" class="form-label">Lines</label>
+        <select class="form-select form-select-lg" name="" id="idBusline" (change)="selectBusline()">
+          <option selected>Select one</option>
+          <option value="">New Delhi</option>
+          <option value="">Istanbul</option>
+          <option value="">Jakarta</option>
+        </select>
+      </div>
+    </div>
+
+
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="addSchedule()">Add a place</button>
+  </form>
+  </div>

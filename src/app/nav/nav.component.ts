@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,7 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  authService : AuthService
+  constructor(service : AuthService) {
+    this.authService = service
+  }
   @Input() isHomePage: boolean = false;
   ngOnInit(): void {
 

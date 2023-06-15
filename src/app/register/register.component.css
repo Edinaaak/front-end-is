@@ -1,0 +1,21 @@
+@media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+  }
+
+  button
+  {
+    background-color: #6699CC;
+    border: none;
+  }
+button:hover{
+
+  background-color: #3d5976;
+
+}
+
+.small-alert {
+  padding: 5px;
+  font-size: 12px;
+}

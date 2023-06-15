@@ -77,3 +77,15 @@ li{
   align-items: center;
   justify-content: center;
 }
+
+button
+{
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+  font-size: large;
+}
+
+button:hover{
+  background-color: rgb(184, 182, 182);
+}

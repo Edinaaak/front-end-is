@@ -1,0 +1,106 @@
+<section class="">
+  <div class="container py-5" id="register-page">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="/assets/images/bus.jpg" class="w-100"
+            style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2" style="text-align: center;">Registration Info</h3>
+
+            <form class="px-md-2" [formGroup]="registerForm">
+              <div class="row" *ngIf="notification !== ''">
+                <div class="col-md-12 mg-4">
+                  <p class="alert alert-success">{{notification}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="exampleDatepicker1" formControlName="name" />
+                  </div>
+                  <div *ngIf="name?.touched && name?.invalid" class="mt-2">
+                    <div *ngIf="name?.errors?.required" class="alert alert-danger small-alert">Name is required</div>
+                    <div *ngIf="name?.errors?.minLength">Name must have min 3 characters</div>
+                    <div *ngIf="name?.errors?.maxLength">Name must have max 12 characters</div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Surname</label>
+                    <input type="text" class="form-control" id="exampleDatepicker1"  formControlName="surname" />
+                  </div>
+                  <div class="mt-2"  *ngIf="surname?.touched && surname?.invalid" >
+                    <div *ngIf="name?.errors?.required" class="alert alert-danger small-alert">Surname is required</div>
+                    <div *ngIf="name?.errors?.maxLength">Name must have max 15 characters</div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleDatepicker1"  formControlName="email"  />
+                  </div>
+                  <div *ngIf="email?.touched && email?.invalid" class="mt-2">
+                    <div *ngIf="email?.errors?.required" class="alert alert-danger small-alert">Email is required</div>
+                    <div *ngIf="name?.errors?.email">Email must have @</div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleDatepicker1" formControlName="password"  />
+                  </div>
+                  <div class="mt-2"  *ngIf="password?.touched && password?.invalid" >
+                    <div *ngIf="password?.errors?.required" class="alert alert-danger small-alert">Password is required</div>
+                    <div *ngIf="password?.errors?.pattern" class="alert alert-danger small-alert">The password must contain at least one lowercase and uppercase letter, a symbol, and a number, and be at least 8 characters long.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3 ">
+                  <label for="" class="form-label">Role</label>
+                  <select class="form-select" id="idUser" (change)="selectId()">
+                    <option value="" selected>Choose one</option>
+                    <option value="2450eb67-a52c-417b-ba2b-f03236421190">Driver</option>
+                    <option value="8f46d4ab-4491-4319-8086-e435464f1082">Conducter</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <label for="exampleDatepicker1" class="form-label">Employment date (Year) </label>
+                    <input type="text" class="form-control" id="exampleDatepicker1"  formControlName="employmentDate"  />
+                  </div>
+                <div class="mt-2"  *ngIf="employmentDate?.touched && password?.invalid" >
+                  <div *ngIf="employmentDate?.errors?.required" class="alert alert-danger small-alert">Employment date is required</div>
+                </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label for="workExperience">Work Experience</label>
+                  <textarea name="" id="" cols="68" rows="5" style="border-radius: 5px;"  formControlName="workExperience" ></textarea>
+                </div>
+                <div class="col-md-12 mb-3"  *ngIf="workExperience?.touched && workExperience?.invalid" >
+                  <div *ngIf="workExperience?.errors?.required" class="alert alert-danger small-alert">Work Experience is required </div>
+                  <div *ngIf="workExperience?.errors?.maxLength" class="alert alert-danger small-alert">Work Experience must have max 200 characters</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg mb-1" (click)="add()">Submit</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

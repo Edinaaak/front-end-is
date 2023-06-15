@@ -1,0 +1,23 @@
+form
+{
+  margin:auto;
+  height: auto;
+  width: 40%;
+  background-color: white;
+  padding: 30px;
+  margin-top: 3%;
+  border-radius: 3px;
+  border: 0.5px solid rgba(128, 128, 128, 0.685);
+}
+
+button
+{
+  background-color:  #6699cc;
+  border: none;
+}
+
+
+.add-busline-page
+{
+  min-height: calc(100vh - 168px) !important;
+}

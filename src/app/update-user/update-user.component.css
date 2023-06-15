@@ -1,0 +1,10 @@
+.update-profile-page
+{
+  min-height: calc(100vh - 170px) !important;
+}
+
+label
+{
+  margin-top: 10px;
+  font-size: large;
+}

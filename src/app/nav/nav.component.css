@@ -1,10 +1,17 @@
+
 nav {
-  /* Stilovi za navigaciju */
-  /* Na primer: */
-  background-size: cover;
-  background-position: center;
-  font-size: x-large; 
-  /* Dodatni stilovi po potrebi */
+
+  background-color: #6699CC;
+  padding: 10px; /* Opciono: Dodajte razmak oko linkova navigacije */
+  color: white; /* Opciono: Promenite boju teksta navigacije */
+  width: 100%;
+  font-size: x-large;
+
+}
+
+.nav a
+{
+  color: white;
 }
 
 
@@ -14,3 +21,16 @@ nav {
   background-position: inherit;
   /* Dodatni stilovi po potrebi */
 }
+button
+{
+  border: none;
+  border-radius: 2px;
+  font-size: large;
+  padding: 5px 10px 5px 10px;
+  height: 40px;
+}
+
+button:hover{
+  background-color: rgb(184, 182, 182);
+}
+
