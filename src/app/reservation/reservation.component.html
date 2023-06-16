@@ -33,7 +33,7 @@
                                 <th>Date</th>
                                 <th>Tv</th>
                                 <th>Air conditioner</th>
-                                <th *ngIf="user?.role[0] == 'Conductor'">Details</th>
+                                <th *ngIf="user?.role == 'Conductor'">Details</th>
                             </tr>
                         </thead>
                         <tbody *ngIf="travelsFilter.length > 0; else noFilter">
@@ -44,7 +44,7 @@
                                 <td>{{getDate(travel?.travelDate)}}</td>
                                 <td>{{travel?.bus?.tv? 'Yes' : 'No'}}</td>
                                 <td>{{travel?.bus?.airConditioner? 'Yes' : 'No'}}</td>
-                                <td *ngIf="user?.role[0] == 'Conductor'"><button (click)="getDetails(travel?.id)">See details</button></td>
+                                <td *ngIf="user?.role == 'Conductor'"><button (click)="getDetails(travel?.id)">See details</button></td>
                             </tr>
                         </tbody>
                         <ng-template #noFilter>
@@ -56,7 +56,7 @@
                               <td>{{getDate(travel?.travelDate)}}</td>
                               <td>{{travel?.bus?.tv? 'Yes' : 'No'}}</td>
                               <td>{{travel?.bus?.airConditioner? 'Yes' : 'No'}}</td>
-                              <td *ngIf="user?.role[0] == 'Conductor'"><button (click)="getDetails(travel?.id)">See details</button></td>
+                              <td *ngIf="user?.role == 'Conductor'"><button (click)="getDetails(travel?.id)">See details</button></td>
                           </tr>
                       </tbody>
                     </ng-template>

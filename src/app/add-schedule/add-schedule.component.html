@@ -1,15 +1,24 @@
 <div class="add-busline-page">
   <form [formGroup]="formLine">
-    <h3 style="text-align: center;">Add a busline</h3>
-    <!-- <div class="alert alert-success d-flex justify-content-center" *ngIf="added">
+    <h3 style="text-align: center;">Create schedule</h3>
+    <div class="alert alert-danger d-flex justify-content-center" *ngIf="busyDrivers">
       <div style="text-align: center;">
-        You added successfully the auditorium!
+        {{Error?.error}}
       </div>
-    </div> -->
+    </div>
+
+    <div class="alert alert-success d-flex justify-content-center" *ngIf="Success">
+      <div style="text-align: center;">
+       Added successfully!
+      </div>
+    </div>
     <!-- Email input -->
     <div class="form-outline mb-4">
       <label class="form-label" for="form2Example1">Arrival Time</label>
       <input type="time" id="form2Example1" class="form-control" formControlName="Arrival" />
+      <div *ngIf="Arrival?.touched && Arrival?.invalid" class="mt-2">
+        <div *ngIf="Arrival?.errors?.required" class="alert alert-danger small-alert">Arrival time is required</div>
+      </div>
     </div>
 
 
@@ -17,6 +26,9 @@
     <div class="form-outline mb-4">
       <label class="form-label" for="form2Example2">Departure Time</label>
       <input type="time" id="form2Example2" class="form-control" formControlName="Departure" />
+      <div *ngIf="Departure?.touched && Departure?.invalid" class="mt-2">
+        <div *ngIf="Departure?.errors?.required" class="alert alert-danger small-alert">Departure time is required</div>
+      </div>
     </div>
 
 
@@ -24,13 +36,16 @@
      <div class="form-outline mb-4">
       <label class="form-label" for="form2Example2">Platform</label>
       <input type="textl" id="form2Example2" class="form-control" formControlName="Platform" />
+      <div *ngIf="Platform?.touched && Platform?.invalid" class="mt-2">
+        <div *ngIf="Platform?.errors?.required" class="alert alert-danger small-alert">Platoform is required</div>
+      </div>
     </div>
 
     <div class="form-outline mb-4">
       <label class="form-label" for="form2Example2">Day</label>
       <div class="mb-3">
         <select class="form-select form-select-lg" name="" id="idDay" (change)="selectDay()">
-          <option selected>Select day</option>
+          <option selected value="">Select day</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
           <option value="Wednesday">Wednesday</option>
@@ -51,7 +66,7 @@
     <ul class="list-group" style="overflow-y: auto; max-height: 150px;">
       <li class="list-group-item" *ngFor="let checkbox of checkboxes">
         <input class="form-check-input me-1" type="checkbox"
-               [value]="checkbox.value" [checked]="checkbox.checked"
+               [value]="checkbox.id" [checked]="checkbox.checked"
                [disabled]="checkbox.disabled"
                (change)="onCheckboxChange(checkbox)">
         {{ checkbox.value }}
@@ -64,16 +79,14 @@
       <div class="mb-3">
         <label for="" class="form-label">Lines</label>
         <select class="form-select form-select-lg" name="" id="idBusline" (change)="selectBusline()">
-          <option selected>Select one</option>
-          <option value="">New Delhi</option>
-          <option value="">Istanbul</option>
-          <option value="">Jakarta</option>
+          <option selected value="">Select one</option>
+          <option *ngFor="let busline of buslines" value="{{busline.id}}">{{busline.fromCity}} - {{busline.toCity}}</option>
         </select>
       </div>
     </div>
 
 
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4" (click)="addSchedule()">Add a place</button>
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="addSchedule()">Add</button>
   </form>
   </div>

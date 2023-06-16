@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ScheduleService } from '../schedule.service';
 import { BusService } from '../bus.service';
 import { TravelService } from '../travel.service';
@@ -17,16 +17,22 @@ export class TravelComponent implements OnInit {
   days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   formLine = new FormGroup(
     {
-        date : new FormControl()
+        date : new FormControl('', Validators.required)
     }
   )
+  get date ()
+  {
+    return this.formLine.get('date')
+  }
   buses : any = {}
   idSchedule : number = 0
   idBus : number = 0
+  Success: boolean = false
   ngOnInit(): void {
     this.schService.getScheduleWithBusline().subscribe(res=>
       {
         this.schedules = res
+        console.log(res)
       },
       error=>
       {
@@ -73,14 +79,18 @@ export class TravelComponent implements OnInit {
             scheduleId : this.idSchedule,
             busId : this.idBus
           }
+          if(this.idBus != 0 && this.idSchedule != 0)
           this.travelService.addTravel(travel).subscribe(res=>
             {
               console.log(res)
+              this.Success = res
             },
             error=>
             {
               console.log(error)
             })
+            else
+            alert("You have to choose bus and schedule")
       }
       else
       {

@@ -21,8 +21,9 @@ export class ReservationComponent implements OnInit {
     this.travelService.getTravels().subscribe(res=>
       {
         this.travels = res
-        this.dates = res.map((x:any)=>this.datePipe.transform(x?.travelDate, 'dd/MM/yyyy'))
-        this.routes = res.map((x:any) => {return x?.schedule?.busLine?.fromCity + " - " + x?.schedule?.busLine?.toCity})
+        this.dates = new Set(res.map((x:any)=>this.datePipe.transform(x?.travelDate, 'dd/MM/yyyy')))
+        this.routes = new Set( res.map((x:any) => {return x?.schedule?.busLine?.fromCity + " - " + x?.schedule?.busLine?.toCity}))
+
         console.log(this.routes)
         console.log(this.travels)
       },

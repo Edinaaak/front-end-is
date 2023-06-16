@@ -7,9 +7,17 @@
     </div>
   </div> -->
   <!-- Email input -->
+  <div class="alert alert-success d-flex justify-content-center" *ngIf="Success">
+    <div style="text-align: center;">
+     Added successfully!
+    </div>
+  </div>
   <div class="form-outline mb-4">
     <label class="form-label" for="form2Example1">From city</label>
     <input type="text" id="form2Example1" class="form-control" formControlName="fromCity" />
+    <div *ngIf="fromCity?.touched && fromCity?.invalid" class="mt-2">
+      <div *ngIf="fromCity?.errors?.required" class="alert alert-danger small-alert">City is required</div>
+    </div>
   </div>
 
 
@@ -17,6 +25,9 @@
   <div class="form-outline mb-4">
     <label class="form-label" for="form2Example2">To city</label>
     <input type="text" id="form2Example2" class="form-control" formControlName="toCity" />
+    <div *ngIf="toCity?.touched && toCity?.invalid" class="mt-2">
+      <div *ngIf="toCity?.errors?.required" class="alert alert-danger small-alert">City is required</div>
+    </div>
   </div>
 
 
@@ -24,16 +35,26 @@
    <div class="form-outline mb-4">
     <label class="form-label" for="form2Example2">Creation Date</label>
     <input type="datetime-local" id="form2Example2" class="form-control" formControlName="creationDate" />
+    <div *ngIf="creationDate?.touched && creationDate?.invalid" class="mt-2">
+      <div *ngIf="creationDate?.errors?.required" class="alert alert-danger small-alert">Date is required</div>
+    </div>
   </div>
 
   <div class="form-outline mb-4">
     <label class="form-label" for="form2Example2">Price</label>
     <input type="text" id="form2Example2" class="form-control" formControlName="price" />
+    <div *ngIf="price?.touched && price?.invalid" class="mt-2">
+      <div *ngIf="price?.errors?.required" class="alert alert-danger small-alert">Price is required</div>
+      <div *ngIf="price?.errors?.pattern" class="alert alert-danger small-alert">Price is a number</div>
+    </div>
   </div>
 
   <div class="form-outline mb-4">
     <label class="form-label" for="form2Example2">Agency</label>
     <input type="text" id="form2Example2" class="form-control" formControlName="agency" />
+    <div *ngIf="agency?.touched && agency?.invalid" class="mt-2">
+      <div *ngIf="agency?.errors?.required" class="alert alert-danger small-alert">Agency is required</div>
+    </div>
   </div>
 
 

@@ -8,9 +8,17 @@
       </div>
     </div> -->
     <!-- Email input -->
+    <div class="alert alert-success d-flex justify-content-center" *ngIf="Success">
+      <div style="text-align: center;">
+       Added successfully!
+      </div>
+    </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="form2Example1">Date</label>
       <input type="date" id="form2Example1" class="form-control" formControlName="date" />
+      <div *ngIf="date?.touched && date?.invalid" class="mt-2">
+        <div *ngIf="date?.errors?.required" class="alert alert-danger small-alert">Date is required</div>
+      </div>
     </div>
 
 
@@ -19,7 +27,7 @@
       <div class="mb-3">
         <label for="" class="form-label">Schedule</label>
         <select class="form-select form-select-lg" name="" id="idSchedule" (change)="selectSchedule()">
-          <option selected>Select one</option>
+          <option selected value="0">Select one</option>
           <option *ngFor="let schedule of schedules" value="{{schedule.id}}" >{{schedule?.busLine?.fromCity}} - {{schedule?.busLine?.toCity}} | {{schedule?.arrivalTime}} - {{schedule?.departureTime}} | {{schedule?.day}} | {{ schedule?.direction ? 'A → B' : 'B → A' }}</option>
         </select>
       </div>
@@ -29,7 +37,7 @@
       <div class="mb-3">
         <label for="" class="form-label">Bus</label>
         <select class="form-select form-select-lg" name="" id="idBus" (change)="selectBus()">
-          <option selected>Select one</option>
+          <option selected value="0">Select one</option>
           <option *ngFor="let bus of buses" value="{{bus.id}}" >{{bus?.name}}</option>
         </select>
       </div>

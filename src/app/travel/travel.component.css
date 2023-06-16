@@ -21,3 +21,7 @@ button
 {
   min-height: calc(100vh - 168px) !important;
 }
+.small-alert {
+  padding: 5px;
+  font-size: 12px;
+}

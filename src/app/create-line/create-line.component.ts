@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BuslineService } from '../busline.service';
 
 
@@ -13,13 +13,38 @@ export class CreateLineComponent implements OnInit {
   constructor(private buslineService : BuslineService) { }
 
   formLine = new FormGroup({
-    fromCity : new FormControl(),
-    toCity : new FormControl(),
-    creationDate : new FormControl(),
-    price : new FormControl(),
-    agency : new FormControl(),
+    fromCity : new FormControl('', Validators.required),
+    toCity : new FormControl('', Validators.required),
+    creationDate : new FormControl('', Validators.required),
+    price : new FormControl('', [Validators.required,Validators.pattern(/^\d+$/)]),
+    agency : new FormControl('', Validators.required),
   })
+  Success : boolean = false
   ngOnInit(): void {
+  }
+  get fromCity()
+  {
+    return this.formLine.get('fromCity')
+  }
+
+  get toCity()
+  {
+    return this.formLine.get('toCity')
+  }
+
+  get creationDate()
+  {
+    return this.formLine.get('creationDate')
+  }
+
+  get price ()
+  {
+    return this.formLine.get('price')
+  }
+
+  get agency()
+  {
+    return this.formLine.get('agency')
   }
 
   addLine()
@@ -37,6 +62,7 @@ export class CreateLineComponent implements OnInit {
     this.buslineService.addBusline(line).subscribe(res=>
       {
        console.log("dodatoo", res)
+       this.Success = true
       },
       error=>
       {
