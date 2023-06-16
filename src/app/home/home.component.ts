@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+import { User } from '../interfaces/User';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +11,17 @@ import { AuthService } from '../auth.service';
 export class HomeComponent implements OnInit {
 
   authService : AuthService
-  constructor(service : AuthService)
+  user: User = {} as User
+  constructor(service : AuthService, private store:Store<{user: User}>)
   {
     this.authService = service
    }
-  imagePath = 'assets/images/slika.jpg';
+  imagePath = '/assets/images/slika.jpg';
   ngOnInit(): void {
+    this.store.select('user').subscribe(res=>
+      {
+        this.user = res
+      })
   }
 
 }

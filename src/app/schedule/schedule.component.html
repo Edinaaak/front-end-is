@@ -1,1 +1,33 @@
-<p>schedule works!</p>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3 mb-lg-5 mt-3">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">My Schedule</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                            <tr>
+                                <th>Route</th>
+                                <th>Arrival Time</th>
+                                <th>Departure Time</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                          <tr class="align-middle" *ngFor="let travel of travels">
+                              <td><b>{{travel?.travel?.schedule?.busLine?.fromCity}} - {{travel?.travel?.schedule?.busLine?.toCity}}</b></td>
+                              <td>{{travel?.travel?.schedule?.arrivalTime}}</td>
+                              <td>{{travel?.travel?.schedule?.departureTime}}</td>
+                              <td>{{getDate(travel?.travel?.travelDate)}}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

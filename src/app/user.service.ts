@@ -30,4 +30,9 @@ export class UserService {
   {
     return this.http.put<any>(`${this.url}/${id}`, data)
   }
+
+  getDrivers()
+  {
+    return this.http.get<any>(`${this.url}/drivers`)
+  }
 }

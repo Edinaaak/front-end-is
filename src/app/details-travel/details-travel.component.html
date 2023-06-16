@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="detail-travel-page">
+  <div class="card-group col-8" style="margin: auto;margin-top: 10%">
+    <div class="card me-4">
+      <img class="card-img-top" src="/assets/images/Predmet1.png" alt="Card image cap">
+      <div class="card-body">
+        <div class="text-center">
+          <h5 class="card-title"></h5>
+          <h3 class="text-black mb-4">{{travel?.schedule?.busLine?.fromCity}} - {{travel?.schedule?.busLine?.toCity}}</h3>
+        </div>
+        <div>
+          <div class="d-flex justify-content-between">
+            <span>Arrival time</span><span>{{travel?.schedule?.arrivalTime}}</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Departure time</span><span>{{travel?.schedule?.departureTime}}</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Date</span><span>{{getDate(travel?.travelDate)}}</span>
+          </div>
+          <div class="d-flex justify-content-between total font-weight-bold mt-4">
+            <span>Number of free seats</span><span>{{freeSeats}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" >
+      <h3 style="text-align: center;" class="mt-4">Reserve ticket</h3>
+      <div class="card-body">
+        <form action="">
+          <div class="mb-3">
+            <label for="" class="form-label mt-4">Number of ticket</label>
+            <input type="text"
+              class="form-control" name="" id="numTicket" aria-describedby="helpId" placeholder="">
+          </div>
+          <div class="d-grid gap-2">
+            <button type="button" name="" id="" class="btn btn-primary" (click)="reserve()">Reserve</button>
+          </div>
+
+          <div class="mb-3 mt-4">
+            <label for="" class="form-label">Seat number</label>
+            <input type="text" [value]="seatNum"
+                class="form-control form-control-sm" name="" id="setNum" aria-describedby="helpId" placeholder="">
+          </div>
+
+          <div class="mb-3 mt-4">
+            <label for="" class="form-label">Amount</label>
+            <input type="text" [value]="amount"
+                class="form-control form-control-sm" name="" id="amount" aria-describedby="helpId" placeholder="">
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

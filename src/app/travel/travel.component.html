@@ -1,0 +1,41 @@
+
+<div class="add-busline-page">
+  <form [formGroup]="formLine">
+    <h3 style="text-align: center;">Create travel</h3>
+    <!-- <div class="alert alert-success d-flex justify-content-center" *ngIf="added">
+      <div style="text-align: center;">
+        You added successfully the auditorium!
+      </div>
+    </div> -->
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Date</label>
+      <input type="date" id="form2Example1" class="form-control" formControlName="date" />
+    </div>
+
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <div class="mb-3">
+        <label for="" class="form-label">Schedule</label>
+        <select class="form-select form-select-lg" name="" id="idSchedule" (change)="selectSchedule()">
+          <option selected>Select one</option>
+          <option *ngFor="let schedule of schedules" value="{{schedule.id}}" >{{schedule?.busLine?.fromCity}} - {{schedule?.busLine?.toCity}} | {{schedule?.arrivalTime}} - {{schedule?.departureTime}} | {{schedule?.day}} | {{ schedule?.direction ? 'A → B' : 'B → A' }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <div class="mb-3">
+        <label for="" class="form-label">Bus</label>
+        <select class="form-select form-select-lg" name="" id="idBus" (change)="selectBus()">
+          <option selected>Select one</option>
+          <option *ngFor="let bus of buses" value="{{bus.id}}" >{{bus?.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="addTravel()">Create</button>
+  </form>
+  </div>

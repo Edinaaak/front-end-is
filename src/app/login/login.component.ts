@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Route, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { User } from '../interfaces/User';
+import { login } from '../store/actions/user.actions';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,7 @@ import { Route, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service : AuthService, private router:Router) { }
+  constructor(private service : AuthService, private router:Router, private store:Store<{user:User}>) { }
   loginForm = new FormGroup(
     {
       email : new FormControl('', [Validators.required]),
@@ -29,8 +32,9 @@ export class LoginComponent implements OnInit {
     }
     this.service.login(user).subscribe(res=>
       {
-        localStorage.setItem('user', res.user);
-        console.log("user is logged");
+        this.store.dispatch(login(res))
+        localStorage.setItem('user', JSON.stringify(res));
+        console.log("user is logged", res);
         this.router.navigate([''])
       },
       error=>

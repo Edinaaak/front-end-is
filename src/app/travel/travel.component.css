@@ -19,5 +19,5 @@ button
 
 .add-busline-page
 {
-  min-height: calc(110vh) !important;
+  min-height: calc(100vh - 168px) !important;
 }

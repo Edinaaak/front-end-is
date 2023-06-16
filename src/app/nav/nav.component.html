@@ -1,9 +1,10 @@
 <nav class="d-flex  "  style="justify-content: space-between;">
   <ul class="nav justify-content-start d-flex ">
   <a class="nav-link active" [routerLink]="['']">Home</a>
-  <a class="nav-link" [routerLink]="['schedule']">My Schedule</a>
+  <a class="nav-link" [routerLink]="['schedule']" *ngIf="user?.role == 'Driver'">My Schedule</a>
   <a class="nav-link" [routerLink]="['add-schedule']">Add Schedule</a>
   <a class="nav-link" [routerLink]="['create-line']">Create Line</a>
+  <a class="nav-link" [routerLink]="['travel']">Travel</a>
   <a class="nav-link" [routerLink]="['reservation']">Reservation</a>
   <a class="nav-link" *ngIf="authService.isLoggedIn()">My Profile</a>
   <a class="nav-link" [routerLink]="['user-list']" routerLinkActive="router-link-active" >User List</a>

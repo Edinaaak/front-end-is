@@ -5,19 +5,14 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ScheduleService {
+export class BusService {
 
+  url = environment.URL + "Bus"
   constructor(private http:HttpClient) { }
-  url = environment.URL + "Schedule";
 
 
-  addSchedule(data:any)
+  getBuses()
   {
-    return this.http.post<any>(`${this.url}`,data)
-  }
-
-  getScheduleWithBusline()
-  {
-    return this.http.get<any>(this.url);
+    return this.http.get<any>(this.url)
   }
 }

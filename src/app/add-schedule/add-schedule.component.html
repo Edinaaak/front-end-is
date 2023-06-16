@@ -42,10 +42,23 @@
       </div>
     </div>
 
-    <div class="form-outline mb-4">
+    <!-- <div class="form-outline mb-4">
       <label class="form-label" for="form2Example2">Direction</label>
       <input type="text" id="form2Example2" class="form-control" formControlName="Direction" />
-    </div>
+    </div> -->
+    <div class="form-outline mb-4">
+      <label for="">Drivers</label>
+    <ul class="list-group" style="overflow-y: auto; max-height: 150px;">
+      <li class="list-group-item" *ngFor="let checkbox of checkboxes">
+        <input class="form-check-input me-1" type="checkbox"
+               [value]="checkbox.value" [checked]="checkbox.checked"
+               [disabled]="checkbox.disabled"
+               (change)="onCheckboxChange(checkbox)">
+        {{ checkbox.value }}
+      </li>
+    </ul>
+  </div>
+
 
     <div class="form-outline mb-4">
       <div class="mb-3">
