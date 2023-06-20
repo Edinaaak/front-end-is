@@ -5,11 +5,15 @@
     <div class="row align-items-center">
         <div class="col-md-6">
             <div class="mb-3 mt-3">
-                <h5 class="card-title">Contact List <span class="text-muted fw-normal ms-2">{{users.length}}</span></h5>
+                <h2 class="card-title">User List <span class="text-muted fw-normal ms-2">{{users.length}}</span></h2>
             </div>
         </div>
         <div class="col-md-6">
             <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3 mt-4">
+              <div class="mb-3">
+                <input type="text"
+                  class="form-control form-control-lg" name="" id="nameValue" aria-describedby="helpId" placeholder="Enter name of drivers or counter clerks" (keyup.enter)="findName()">
+              </div>
               <div class="mb-3">
                 <select class="form-select form-select-lg" name="" id="id" (change)="filterUsers()">
                   <option selected>Select Role</option>
@@ -24,7 +28,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="">
-                <div class="table-responsive">
+                <div class="table-responsive" >
                     <table class="table project-list-table table-nowrap align-middle table-borderless">
                         <thead>
                             <tr>
@@ -32,12 +36,12 @@
                                 <th scope="col">Position</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Employment Date</th>
-                                <th scope="col" style="width: 200px;">Action</th>
+                                <th scope="col" >Action</th>
                             </tr>
                         </thead>
-                        <tbody *ngIf="usersFilter.length > 0;else noFilter">
+                        <tbody *ngIf="usersFilter.length > 0;else noFilter"  style="overflow-y: scroll; max-height: 450px; " >
                             <tr *ngFor="let user of usersFilter">
-                                <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body">{{user?.name}}  {{user?.surname}}</a></td>
+                                <td><a href="#" class="text-body">{{user?.name}}  {{user?.surname}}</a></td>
                                 <td><span class="badge badge-soft-success mb-0">{{user?.role}}</span></td>
                                 <td>{{user?.email}}</td>
                                 <td>{{user?.employmentDate}}</td>
@@ -54,12 +58,12 @@
                             </tr>
                         </tbody>
                         <ng-template #noFilter>
-                        <tbody>
+                        <tbody style="overflow-y: scroll; max-height: 450px;">
                             <tr *ngFor="let user of users">
-                                <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body">{{user?.name}}  {{user?.surname}}</a></td>
+                                <td><a href="#" class="text-body">{{user?.name}}  {{user?.surname}}</a></td>
                                 <td><span class="badge badge-soft-success mb-0">{{user?.role}}</span></td>
                                 <td>{{user?.email}}</td>
-                                <td>{{user?.employmentDate}}</td>
+                                <td style="padding-left: 30px;">{{user?.employmentDate}}</td>
                                 <td>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">
@@ -78,4 +82,229 @@
             </div>
         </div>
     </div>
+    <div class="row align-items-center">
+      <div class="col-md-6">
+          <div class="mb-3 mt-3">
+              <h2 class="card-title">Buslines<span class="text-muted fw-normal ms-2">{{buslines.length}}</span></h2>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3 mt-4">
+            <div class="mb-3">
+              <input type="text"
+                class="form-control form-control-lg" name="" id="buslineCity" aria-describedby="helpId" placeholder="Enter city" (keyup.enter)="findBusline()">
+            </div>
+          </div>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="">
+              <div class="table-responsive" >
+                  <table class="table project-list-table table-nowrap align-middle table-borderless">
+                      <thead>
+                          <tr>
+                              <th scope="col">From city - To city</th>
+                              <th scope="col">Date of Establishment</th>
+                              <th scope="col">Agency</th>
+                              <th scope="col">Action</th>
+                          </tr>
+                      </thead>
+
+                      <tbody *ngIf="buslinesFilter.length > 0; else noFilter2" >
+                          <tr *ngFor="let busline of buslinesFilter">
+                              <td>{{busline?.fromCity}} - {{busline?.toCity}}</td>
+                              <td><span class="badge badge-soft-success mb-0">{{(busline?.creationDate).toUpperCase()}}</span></td>
+                              <td style="padding-left: 30px;">{{busline?.agency}}</td>
+                              <td style="padding-left: 30px;">
+                                <ul class="list-inline mb-0">
+
+                                    <li class="list-inline-item">
+                                        <button (click)="deleteBusline(busline?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" style="background-color: transparent;border: none;"><i class="bx bx-trash-alt font-size-18"></i></button>
+                                    </li>
+                                </ul>
+                            </td>
+                          </tr>
+                      </tbody>
+                      <ng-template #noFilter2>
+                      <tbody>
+                        <tr *ngFor="let busline of buslines">
+                            <td>{{busline?.fromCity}} - {{busline?.toCity}}</td>
+                            <td><span class="badge badge-soft-success mb-0">{{(busline?.creationDate).toUpperCase()}}</span></td>
+                            <td style="padding-left: 30px;">{{busline?.agency}}</td>
+                            <td style="padding-left: 30px;">
+                              <ul class="list-inline mb-0">
+
+                                  <li class="list-inline-item">
+                                      <button (click)="deleteBusline(busline?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" style="background-color: transparent;border: none;"><i class="bx bx-trash-alt font-size-18"></i></button>
+                                  </li>
+                              </ul>
+                          </td>
+                        </tr>
+                    </tbody>
+                  </ng-template>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-6">
+        <div class="mb-3 mt-3">
+            <h2 class="card-title">Schedules<span class="text-muted fw-normal ms-2">{{schedules.length}}</span></h2>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3 mt-4">
+          <div class="mb-3">
+            <input type="text"
+              class="form-control form-control-lg" name="" id="scheduleCity" aria-describedby="helpId" placeholder="Enter city" (keyup.enter)="findSchedule()">
+          </div>
+          <div class="mb-3">
+            <select class="form-select form-select-lg" name="" id="filterSchedule" (change)="filterSchedule()">
+              <option selected>Select Time</option>
+              <option *ngFor="let schedule of scheduleTime" value="{{schedule}}">{{schedule}}</option>
+            </select>
+          </div>
+        </div>
+
+    </div>
+</div>
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="">
+            <div class="table-responsive" >
+                <table class="table project-list-table table-nowrap align-middle table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Route</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Platform</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="schedulesFilter.length > 0; else noFilter3">
+                      <tr *ngFor="let schedule of schedulesFilter">
+                          <td>{{schedule?.busLine?.fromCity}} - {{schedule?.busLine?.toCity}}</td>
+                          <td><a href="#" class="text-body">{{schedule?.arrivalTime}}h - {{schedule?.departureTime}}h</a></td>
+                          <td><span class="badge badge-soft-success mb-0">{{(schedule?.day).toUpperCase()}}</span></td>
+                          <td style="padding-left: 30px;">{{schedule?.platform}}</td>
+                          <td>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                    <button (click)="updateSchedule(schedule?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" style="background-color: transparent;border: none;"><i class="bx bx-pencil font-size-18"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button (click)="deleteSchedule(schedule?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" style="background-color: transparent;border: none;"><i class="bx bx-trash-alt font-size-18"></i></button>
+                                </li>
+                            </ul>
+                        </td>
+                      </tr>
+                  </tbody>
+                    <ng-template #noFilter3>
+                    <tbody>
+                        <tr *ngFor="let schedule of schedules">
+                            <td>{{schedule?.busLine?.fromCity}} - {{schedule?.busLine?.toCity}}</td>
+                            <td><a href="#" class="text-body">{{schedule?.arrivalTime}}h - {{schedule?.departureTime}}h</a></td>
+                            <td><span class="badge badge-soft-success mb-0">{{(schedule?.day).toUpperCase()}}</span></td>
+                            <td style="padding-left: 30px;">{{schedule?.platform}}</td>
+                            <td>
+                              <ul class="list-inline mb-0">
+                                  <li class="list-inline-item">
+                                      <button (click)="updateSchedule(schedule?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" style="background-color: transparent;border: none;"><i class="bx bx-pencil font-size-18"></i></button>
+                                  </li>
+                                  <li class="list-inline-item">
+                                      <button (click)="deleteSchedule(schedule?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" style="background-color: transparent;border: none;"><i class="bx bx-trash-alt font-size-18"></i></button>
+                                  </li>
+                              </ul>
+                          </td>
+                        </tr>
+                    </tbody>
+                  </ng-template>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-center">
+  <div class="col-md-6">
+      <div class="mb-3 mt-3">
+          <h2 class="card-title">Travels<span class="text-muted fw-normal ms-2">{{travels.length}}</span></h2>
+      </div>
+  </div>
+  <div class="col-md-6">
+      <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3 mt-4">
+        <div class="mb-3">
+          <select class="form-select form-select-lg" name="" id="filterTravel" (change)="filterTravel()">
+            <option selected>Select bus</option>
+            <option *ngFor="let bus of buses" value="{{bus}}">{{bus}}</option>
+          </select>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+      <div class="">
+          <div class="table-responsive" >
+              <table class="table project-list-table table-nowrap align-middle table-borderless">
+                  <thead>
+                      <tr>
+                          <th scope="col">Route</th>
+                          <th scope="col">Arrival Time</th>
+                          <th scope="col">Departure Time</th>
+                          <th scope="col">Travel Date</th>
+                          <th scope="col">Bus</th>
+                          <th scope="col">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody *ngIf="travelsFilter.length > 0; else noFilter4">
+                    <tr *ngFor="let travel of travelsFilter">
+                      <td><b>{{travel?.schedule?.busLine?.fromCity}} - {{travel?.schedule?.busLine?.toCity}}</b></td>
+                      <td>{{travel?.schedule?.arrivalTime}}</td>
+                      <td>{{travel?.schedule?.departureTime}}</td>
+                      <td>{{getDate(travel?.travelDate)}}</td>
+                      <td>{{travel?.bus?.name}}</td>
+                        <td>
+                          <ul class="list-inline mb-0">
+                              <li class="list-inline-item">
+                                <button (click)="updateTravel(travel?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" style="background-color: transparent;border: none;"><i class="bx bx-pencil font-size-18"></i></button>
+                              </li>
+                              <li class="list-inline-item">
+                                  <button (click)="deleteTravel(travel?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" style="background-color: transparent;border: none;"><i class="bx bx-trash-alt font-size-18"></i></button>
+                              </li>
+                          </ul>
+                      </td>
+                    </tr>
+                </tbody>
+                <ng-template #noFilter4>
+                  <tbody>
+                      <tr *ngFor="let travel of travels">
+                        <td><b>{{travel?.schedule?.busLine?.fromCity}} - {{travel?.schedule?.busLine?.toCity}}</b></td>
+                        <td>{{travel?.schedule?.arrivalTime}}</td>
+                        <td>{{travel?.schedule?.departureTime}}</td>
+                        <td>{{getDate(travel?.travelDate)}}</td>
+                        <td>{{travel?.bus?.name}}</td>
+                          <td>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                  <button (click)="updateTravel(travel?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" style="background-color: transparent;border: none;"><i class="bx bx-pencil font-size-18"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button (click)="deleteTravel(travel?.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" style="background-color: transparent;border: none;"><i class="bx bx-trash-alt font-size-18"></i></button>
+                                </li>
+                            </ul>
+                        </td>
+                      </tr>
+                  </tbody>
+                </ng-template>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+
 </div>

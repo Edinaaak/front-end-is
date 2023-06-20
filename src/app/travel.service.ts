@@ -24,4 +24,15 @@ export class TravelService {
   {
     return this.http.get<any>(`${this.url}/${id}`)
   }
+  deleteTravel(id:number)
+  {
+    return this.http.delete<any>(`${this.url}/${id}`)
+  }
+
+  updateTravel( data:any, id:number)
+  {
+    return this.http.put<any>(`${this.url}/${id}`, data)
+  }
+
+
 }

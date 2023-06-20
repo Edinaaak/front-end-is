@@ -1,0 +1,22 @@
+
+.btn-close {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background-color: hsl(216, 100, 50);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+  .icon-cross:hover
+{
+  background-color: hsl(216, 100, 40);
+}
+
+
+

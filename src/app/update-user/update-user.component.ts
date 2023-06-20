@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { User } from '../interfaces/User';
+import { updateUser } from '../store/actions/user.actions';
 
 
 @Component({
@@ -11,9 +14,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateUserComponent implements OnInit {
 
-  constructor(private userService : UserService, private router: ActivatedRoute) { }
-  idUser : string = ""
+  constructor(private userService : UserService, private router: ActivatedRoute, private router2 : Router,
+    private userStorage : Store<{user:User}>) { }
+  idUser : any = {}
   user : any = {}
+  userFromStorage : User  = {} as User
   updateForm = new FormGroup(
     {
       name : new FormControl('', Validators.required),
@@ -25,9 +30,9 @@ export class UpdateUserComponent implements OnInit {
   )
   ngOnInit(): void {
 
-    this.router.paramMap.subscribe(param =>
+    this.router.paramMap.subscribe(res =>
       {
-        this.idUser = param.get('id')?? "0"
+        this.idUser = res.get('id')
         console.log(this.idUser)
         this.userService.getUser(this.idUser).subscribe(res=>
           {
@@ -41,6 +46,11 @@ export class UpdateUserComponent implements OnInit {
             console.log(error)
           })
       })
+
+      this.userStorage.select('user').subscribe(res=>
+        {
+          this.userFromStorage = res
+        })
   }
 
   update()
@@ -56,6 +66,9 @@ export class UpdateUserComponent implements OnInit {
     this.userService.updateUser(this.idUser, user).subscribe(res=>
       {
         console.log(res,"updatedd")
+        this.userStorage.dispatch(updateUser({user:res}))
+        localStorage.setItem('user', JSON.stringify(this.userFromStorage))
+        this.router2.navigate([''])
       },
       error=>
       {

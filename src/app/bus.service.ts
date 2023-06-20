@@ -15,4 +15,14 @@ export class BusService {
   {
     return this.http.get<any>(this.url)
   }
+
+  getBusesForDriver(id : string)
+  {
+    return this.http.get<any>(`${this.url}/busDriver/${id}`)
+  }
+
+  reportFailure (request :  any)
+  {
+    return this.http.post<any>(`${this.url}/report-failure`, request)
+    }
 }

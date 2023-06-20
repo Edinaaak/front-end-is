@@ -8,7 +8,7 @@ export const login = createAction(
 
 export const logout = createAction('[Navigation Component LogoutUser]');
 
-export const updateUser = createAction( '[Update-user Component] UpdateUser', props<{ travels: any}>()
+export const updateUser = createAction( '[Update-user Component] UpdateUser', props<{ user: any}>()
 );
 
 

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
       password : new FormControl('', [Validators.required])
     }
   )
+  Error : string = ""
   ngOnInit(): void {
   }
 
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
       error=>
       {
         console.log(error)
+        this.Error = error.error
       })
   }
 

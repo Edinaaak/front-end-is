@@ -14,6 +14,11 @@
                   <p class="alert alert-success">{{notification}}</p>
                 </div>
               </div>
+              <div class="row" *ngIf="Error !== ''">
+                <div class="col-md-12 mg-4">
+                  <p class="alert alert-danger">{{Error}}</p>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline datepicker">

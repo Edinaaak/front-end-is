@@ -90,11 +90,13 @@ export class AddScheduleComponent implements OnInit {
       {
         this.Success = res;
         console.log("added", res)
+        this.busyDrivers = false; 
       },error =>
       {
         this.busyDrivers = true;
         console.log(error?.error)
         this.Error = error
+        this.Success = false
       })}
 
   }

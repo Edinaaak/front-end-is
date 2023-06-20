@@ -67,6 +67,7 @@ export class CreateLineComponent implements OnInit {
       error=>
       {
         console.log(error)
+        this.Success = false
       })
 
 

@@ -19,4 +19,11 @@ export class BuslineService {
   {
     return this.http.get<any>(this.url)
   }
+
+  deleteBusline(id:number)
+  {
+    return this.http.delete<any>(`${this.url}/${id}`)
+  }
+
+
 }

@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   {
     this.authService = service
    }
-  imagePath = '/assets/images/slika.jpg';
+  imagePath = '/assets/images/cover.jpg';
   ngOnInit(): void {
     this.store.select('user').subscribe(res=>
       {

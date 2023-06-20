@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
+import { User } from './interfaces/User';
+import { logout } from './store/actions/user.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +12,10 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   url = environment.URL + "Auth";
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router, private store:Store<{user:User}>) { }
 
 
-  login( credentials : any)
+  login( credentials : any )
   {
     return this.http.post<any>(`${this.url}/login`, credentials);
   }
@@ -27,7 +31,9 @@ export class AuthService {
 
   logout()
   {
+    this.store.dispatch(logout())
     localStorage.removeItem('user');
+    this.router.navigate([''])
   }
 
 

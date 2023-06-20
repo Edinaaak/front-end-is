@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="card" style="width: 1000px; margin: auto;margin-top: 5%; height: auto;border-radius: 5px; margin-bottom: 5%;">
+  <div class="row">
+    <div class="col-6" style="height: auto;">
+    <img src="https://timewellscheduled.com/wp-content/uploads/2019/05/Schedule.jpg" class="rounded" style="width: 100%;height: 100%;object-fit: cover ;" alt="Card title">
+    </div>
+
+    <div class="col-6">
+    <div class="card-body">
+      <h3 class="card-title mt-3" style="text-align: center;">Update Schedule!</h3>
+      <form action="" [formGroup]="formSchedule">
+        <div class="mb-3">
+          <label for="" class="form-label">Arrival Time</label>
+          <input type="time"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="" formControlName="aTime">
+        </div>
+
+        <div class="mb-3">
+          <label for="" class="form-label">Departure Time</label>
+          <input type="time"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="" formControlName="dTime">
+        </div>
+
+        <div class="mb-3">
+          <label for="" class="form-label">Platform</label>
+          <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="" formControlName="platform">
+        </div>
+
+        <div class="row" style="margin-left: 5px;" style="align-items: center; text-align: center; justify-content: center;">
+
+        <div class="card col-xl-3 text-start me-4"  style="padding: 0px; margin: 0px;" *ngFor="let driver of scheduleDetails?.users">
+          <img class="card-img-top mt-2" src="/assets/images/driver.png" alt="Title">
+          <div class="card-body" style="text-align: center;">
+            <span>{{driver?.users?.name}}</span><br>
+            <span>{{driver?.users?.surname}}</span><br>
+            <button type="button" class="btn-close mt-2" (click)="removeDriver(driver?.users?.id)">
+              <span class="icon-cross"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3" style="text-align: start;">
+          <label for="" class="form-label" >Driver (max 3)</label>
+          <ul class="list-group" style="overflow-y: auto; max-height: 150px;">
+            <li class="list-group-item" *ngFor="let checkbox of checkboxes">
+              <input class="form-check-input me-1" type="checkbox"
+                     [value]="checkbox.id" [checked]="checkbox.checked"
+                     [disabled]="checkbox.disabled"
+                     (change)="onCheckboxChange(checkbox)">
+              {{ checkbox.value }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="d-grid gap-2 mt-3">
+          <button type="button" name="" id="" class="btn btn-primary" (click)="updateSchedule()">Update</button>
+        </div>
+
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

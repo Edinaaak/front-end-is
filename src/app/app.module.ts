@@ -20,7 +20,15 @@ import { CreateLineComponent } from './create-line/create-line.component';
 import { AddScheduleComponent } from './add-schedule/add-schedule.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { TravelComponent } from './travel/travel.component';
-import { DetailsTravelComponent } from './details-travel/details-travel.component'
+import { DetailsTravelComponent } from './details-travel/details-travel.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BusesListComponent } from './buses-list/buses-list.component';
+import { UpdateScheduleComponent } from './update-schedule/update-schedule.component';
+import { UpdateTravelComponent } from './update-travel/update-travel.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +45,15 @@ import { DetailsTravelComponent } from './details-travel/details-travel.componen
     AddScheduleComponent,
     ReservationComponent,
     TravelComponent,
-    DetailsTravelComponent
+    DetailsTravelComponent,
+    ProfileComponent,
+    BusesListComponent,
+    UpdateScheduleComponent,
+    UpdateTravelComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    NotFoundComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +73,17 @@ import { DetailsTravelComponent } from './details-travel/details-travel.componen
     {path:'add-schedule', component:AddScheduleComponent},
     {path:'reservation', component:ReservationComponent},
     {path:'travel', component:TravelComponent},
-    {path:'travel-details/:id', component:DetailsTravelComponent}
+    {path:'travel-details/:id', component:DetailsTravelComponent},
+    {path:'profile', component:ProfileComponent},
+    {path:'buses-list', component:BusesListComponent},
+    {path:'update-schedule/:id', component:UpdateScheduleComponent},
+    {path:'update-travel/:id', component:UpdateTravelComponent},
+    {path:'forgot-password', component:ForgotPasswordComponent},
+    {path:'change-password', component:ChangePasswordComponent},
+    {path:'unauthorized', component: UnauthorizedComponent},
+    {path:'**', component:NotFoundComponent}
+
+
 
     ])
   ],

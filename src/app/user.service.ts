@@ -35,4 +35,15 @@ export class UserService {
   {
     return this.http.get<any>(`${this.url}/drivers`)
   }
+
+  forgotPassword(email : string)
+   {
+
+    return this.http.post<any>(`${this.url}/forgot-password?email=${encodeURIComponent(email)}`, null )
+   }
+
+   changePassword(data:any)
+   {
+    return this.http.post<any>(`${this.url}/reset-password`, data)
+   }
 }

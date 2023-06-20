@@ -1,0 +1,32 @@
+<div class="profile-page">
+<div class="container db-social">
+  <div class="jumbotron jumbotron-fluid"></div>
+  <div class="container-fluid">
+      <div class="row justify-content-center">
+          <div class="col-xl-12">
+              <div class="widget head-profile has-shadow">
+                  <div class="widget-body pb-0">
+                      <div class="row d-flex align-items-center">
+                          <div class="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
+                          </div>
+                          <div class="col-xl-4 col-md-4 d-flex justify-content-center">
+                              <div class="infos" style="text-align: center;">
+                                  <h1>{{user.user?.name}} {{user.user?.surname}}</h1>
+                                  <h5>Email:</h5><p>{{user.user?.email}}</p>
+                                  <h5>Employment date:</h5><p>{{user.user?.employmentDate}}</p>
+                                  <h5>Work Experience:</h5><p>{{user.user?.workExperience}}</p>
+                                  <button class="me-2 mt-3"  (click)="update(user.user?.id)" >Update profile</button>
+                                  <button (click)="delete(user.user?.id)">Delete profile</button>
+                              </div>
+                          </div>
+                          <div class="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+

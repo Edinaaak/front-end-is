@@ -24,6 +24,9 @@ export class RegisterComponent implements OnInit {
   )
   idUser: string = ""
   notification: string = ""
+  Error : string = ""
+
+
   constructor(private authService: AuthService) { }
   ngOnInit(): void {
     console.log(this.name)
@@ -87,7 +90,8 @@ export class RegisterComponent implements OnInit {
         this.notification = "Registered successfully"
       },
         error => {
-          console.log(error)
+          console.log(error.error)
+          this.Error = error.error
         })
     }
   }

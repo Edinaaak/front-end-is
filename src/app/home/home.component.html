@@ -12,12 +12,13 @@
         <ul class="nav justify-content-start d-flex ">
         <a class="nav-link active" [routerLink]="['']">Home</a>
         <a class="nav-link" [routerLink]="['schedule']"  *ngIf="user?.role == 'Driver'">My Schedule</a>
-        <a class="nav-link" [routerLink]="['add-schedule']">Add Schedule</a>
-        <a class="nav-link" [routerLink]="['create-line']">Create Line</a>
-        <a class="nav-link" [routerLink]="['travel']">Travel</a>
-        <a class="nav-link" [routerLink]="['reservation']">Reservation</a>
-        <a class="nav-link" *ngIf="authService.isLoggedIn()">My Profile</a>
-        <a class="nav-link" [routerLink]="['user-list']" routerLinkActive="router-link-active" >User List</a>
+        <a class="nav-link" [routerLink]="['add-schedule']" *ngIf="user?.role == 'Admin'">Add Schedule</a>
+        <a class="nav-link" [routerLink]="['create-line']" *ngIf="user?.role == 'Admin'">Create Line</a>
+        <a class="nav-link" [routerLink]="['travel']" *ngIf="user?.role == 'Admin' ">Travel</a>
+        <a class="nav-link" [routerLink]="['reservation']" *ngIf="user?.role != 'Admin' && authService.isLoggedIn()">Travels</a>
+        <a class="nav-link" [routerLink]="['buses-list']" *ngIf="user?.role == 'Driver'">Bus List</a>
+        <a class="nav-link" *ngIf="authService.isLoggedIn()" [routerLink]="['profile']">My Profile</a>
+        <a class="nav-link" [routerLink]="['user-list']" routerLinkActive="router-link-active" *ngIf="user?.role == 'Admin'" >Management List</a>
         </ul>
         <ul class="nav d-flex me-4">
           <button class="me-2" [routerLink]="['register']" *ngIf="!authService.isLoggedIn()">Register</button>
@@ -25,10 +26,10 @@
           <button *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Logout</button>
         </ul>
       </nav>
-      <img [src]="imagePath" class="img-fluid" alt="image desc">
+      <img [src]="imagePath" style="object-fit: cover;" alt="image desc">
     </div>
 
-    <h2 style="text-align: center;margin: 0px 50px 0px 50px;" class="mt-4 mb-5 ">This platform is designed exclusively for our dedicated team of administrators, drivers, and counter clerk</h2>
+    <h1 style="text-align: center;margin: 0px 50px 0px 50px;" class="mt-4 mb-5 ">This platform is designed exclusively for our dedicated team of administrators, drivers, and counter clerk</h1>
 
     <div class="cards d-flex justify-content-center mb-5">
 
@@ -56,10 +57,22 @@
       </div>
     </div>
     </div>
+    <div class="d-flex justify-content-center  mb-5 p-5" >
+      <div class="p-5 " style="text-align: justify;margin-left: 90px;">
+        <h2>SEARCH FUNCTIONALITY</h2><br>
+        You don't have to worry about which departures operate according to the summer timetable,
+        which ones on holidays, and which ones on weekends. Simply select the date and approximate travel time,
+         and "Polazak" will display the valid timetable for that day for all bus and train lines.
+          If you only choose the name of the settlement during the search, the results will include
+           all stations  in the selected settlement.</div>
+      <div class="p-5" style="text-align: justify;margin-right: 90px;">
+        <h2 >SEARCH WITH TRANSFERS</h2><br>
+        The team behind the "Polazak" website puts a lot of effort into connecting existing lines of different transport providers
+         if there are no direct departures on the requested route. Users of the website are presented with options
+          for transfers. The search with transfers lists all those departures that, travel time, can take the passenger to the desired destination with one transfer at one of the
+           intermediate stations.</div>
+    </div>
 
-    <p style="text-align:center;font-style:normal;font-size:x-large;font-weight: lighter; padding: 20px;">We understand the importance of reliability and accuracy in the transportation industry, which is why our platform is built with robust security measures to safeguard sensitive data and ensure seamless operations.
-
-      We value your feedback and are continuously working to improve our platform based on your suggestions and needs. If you have any questions, concerns, or ideas for enhancements, please don't hesitate to reach out to our support team.</p>
   </div>
 
   <ul class="list-unstyled">

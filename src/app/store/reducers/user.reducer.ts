@@ -4,7 +4,7 @@ import { login, logout, updateUser } from "../actions/user.actions";
 
 export const initialState : User =
 {
-  
+
   expires : '',
   token : '',
   user: null,
@@ -17,6 +17,6 @@ export const userReducer = createReducer(
   initialState,
   on(login, (state, user) => Object.assign({}, state,user)),
   on(logout, () => Object.assign({}, initialState)),
-  on(updateUser, (state, {travels}) => ({...state, travels:{...state.travels, ...travels}}))
+  on(updateUser, (state, {user}) => ({...state, user:{...state.user, ...user}}))
 
 )

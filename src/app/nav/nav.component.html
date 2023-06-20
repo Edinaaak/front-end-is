@@ -2,12 +2,13 @@
   <ul class="nav justify-content-start d-flex ">
   <a class="nav-link active" [routerLink]="['']">Home</a>
   <a class="nav-link" [routerLink]="['schedule']" *ngIf="user?.role == 'Driver'">My Schedule</a>
-  <a class="nav-link" [routerLink]="['add-schedule']">Add Schedule</a>
-  <a class="nav-link" [routerLink]="['create-line']">Create Line</a>
-  <a class="nav-link" [routerLink]="['travel']">Travel</a>
-  <a class="nav-link" [routerLink]="['reservation']">Reservation</a>
-  <a class="nav-link" *ngIf="authService.isLoggedIn()">My Profile</a>
-  <a class="nav-link" [routerLink]="['user-list']" routerLinkActive="router-link-active" >User List</a>
+  <a class="nav-link" [routerLink]="['add-schedule']" *ngIf="user?.role == 'Admin'">Add Schedule</a>
+  <a class="nav-link" [routerLink]="['create-line']" *ngIf="user?.role == 'Admin'">Create Line</a>
+  <a class="nav-link" [routerLink]="['travel']" *ngIf="user?.role == 'Admin'">Travel</a>
+  <a class="nav-link" [routerLink]="['reservation']" *ngIf="user?.role != 'Admin' && authService.isLoggedIn()">Travels</a>
+  <a class="nav-link" [routerLink]="['buses-list']" *ngIf="user?.role == 'Driver'">Bus List</a>
+  <a class="nav-link" *ngIf="authService.isLoggedIn()" (click)="navigate()">My Profile</a>
+  <a class="nav-link" [routerLink]="['user-list']" routerLinkActive="router-link-active" *ngIf="user?.role == 'Admin'" >Management List</a>
   </ul>
   <ul class="nav d-flex me-4 mt-1">
     <button class="me-2" [routerLink]="['register']" *ngIf="!authService.isLoggedIn()">Register</button>

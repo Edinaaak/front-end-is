@@ -27,3 +27,8 @@ button
   padding: 5px;
   font-size: 12px;
 }
+
+label
+{
+  font-size: large;
+}
