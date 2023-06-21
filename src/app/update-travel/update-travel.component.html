@@ -10,12 +10,19 @@
     <!-- Email input -->
     <div class="alert alert-success d-flex justify-content-center" *ngIf="Success">
       <div style="text-align: center;">
-       Added successfully!
+       Updated successfully!
       </div>
     </div>
+
+    <div class="alert alert-danger d-flex justify-content-center" *ngIf="Error!= ''">
+      <div style="text-align: center;">
+       {{Error}}
+      </div>
+    </div>
+
     <div class="form-outline mb-4">
       <label class="form-label" for="form2Example1">Date</label>
-      <input type="date" id="form2Example1" class="form-control" formControlName="date" />
+      <input type="date" id="form2Example1" class="form-control" formControlName="date" (change)="checkDate()" />
       <div *ngIf="date?.touched && date?.invalid" class="mt-2">
         <div *ngIf="date?.errors?.required" class="alert alert-danger small-alert">Date is required</div>
       </div>

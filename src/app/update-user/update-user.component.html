@@ -3,47 +3,57 @@
   <h1 class="text-black" >Edit Profile</h1>
     <hr>
 <div class="row">
-    <!-- left column -->
-   
-
-    <!-- edit form column -->
     <div class="col-md-6 personal-info mt-3">
-      <!-- <div class="alert alert-info alert-dismissable">
-        <a class="panel-close close" data-dismiss="alert">×</a>
-        <i class="fa fa-coffee"></i>
-        This is an <strong>.alert</strong>. Use this to show important messages to the user.
-      </div> -->
-      <!-- <h2>Personal info</h2> -->
-
       <form class="form-horizontal" role="form" [formGroup]="updateForm">
+        <div class="row" *ngIf="Error !== ''">
+          <div class="col-md-12 mg-4">
+            <p class="alert alert-danger">{{Error}}</p>
+          </div>
+        </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value="" formControlName="name">
+            <div *ngIf="name?.touched && name?.invalid" class="mt-2">
+              <div *ngIf="name?.errors?.required" class="alert alert-danger small-alert">Name is required</div>
+              <div *ngIf="name?.errors?.minlength"  class="alert alert-danger small-alert">Name must have min 3 characters</div>
+              <div *ngIf="name?.errors?.maxlength"  class="alert alert-danger small-alert">Name must have max 15 characters</div>
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Surname:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value=""  formControlName="surname">
+            <div *ngIf="surname?.touched && surname?.invalid" class="mt-2">
+              <div *ngIf="surname?.errors?.required" class="alert alert-danger small-alert">Surname is required</div>
+              <div *ngIf="surname?.errors?.minlength"  class="alert alert-danger small-alert">Surname must have min 3 characters</div>
+              <div *ngIf="surname?.errors?.maxlength" class="alert alert-danger small-alert">Surname must have max 20 characters</div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="userFromStorage?.user?.email == user?.email">
           <label class="col-lg-3 control-label">Password:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value=""  formControlName="password">
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="userFromStorage?.user?.email == user?.email">
           <label class="col-lg-3 control-label">New password:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value=""  formControlName="newPassword">
+            <div *ngIf="newPassword?.touched && newPassword?.invalid" class="mt-2">
+              <div *ngIf="newPassword?.errors?.pattern" class="alert alert-danger small-alert">The password must contain at least one lowercase and uppercase letter, a symbol, and a number, and be at least 8 characters long.</div>
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Employment Date:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value="" formControlName="employmentDate">
+            <div *ngIf="employmentDate?.touched && employmentDate?.invalid" class="mt-2">
+              <div *ngIf="employmentDate?.errors?.required" class="alert alert-danger small-alert">Employment date is required</div>
+            </div>
           </div>
         </div>
 

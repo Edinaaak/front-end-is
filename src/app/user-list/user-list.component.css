@@ -85,12 +85,82 @@ body{margin-top:20px;
 
   table tbody {
     display: block;
-    max-height: 500px;
-    overflow-y: scroll;
   }
 
   table thead, table tbody tr {
     display: table;
     width: 100%;
     table-layout: fixed;
+  }
+
+  @media (max-width: 767px) {
+    .table-responsive {
+      width: 100%;
+      overflow-y: hidden;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      border: 1px solid #e9ecef;
+      margin-bottom: 15px;
+    }
+
+    .table {
+      display: table;
+      width: 100%;
+      overflow-y: hidden;
+      border-collapse: collapse;
+    }
+
+    .table thead,
+    .table tbody,
+    .table th,
+    .table td,
+    .table tr {
+      display: block;
+    }
+
+    .table thead th {
+      text-align: left;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .table tbody {
+      height: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .table tbody tr {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .table tbody tr:last-child {
+      margin-bottom: 0;
+    }
+
+    .table tbody th,
+    .table tbody td {
+      display: block;
+      text-align: center;
+    }
+
+    .table tbody td {
+      border-bottom: none;
+    }
+
+    .table tbody td:before {
+      display: none;
+    }
+
+    .table tbody td:not(:last-child) {
+      border-bottom: 1px solid #e9ecef;
+      margin-bottom: 0;
+    }
+
+    .table tbody td:not(:last-child):before {
+      content: attr(data-label);
+      font-weight: bold;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
   }

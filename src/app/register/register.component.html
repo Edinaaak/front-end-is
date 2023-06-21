@@ -27,8 +27,8 @@
                   </div>
                   <div *ngIf="name?.touched && name?.invalid" class="mt-2">
                     <div *ngIf="name?.errors?.required" class="alert alert-danger small-alert">Name is required</div>
-                    <div *ngIf="name?.errors?.minLength">Name must have min 3 characters</div>
-                    <div *ngIf="name?.errors?.maxLength">Name must have max 12 characters</div>
+                    <div *ngIf="name?.errors?.minlength"  class="alert alert-danger small-alert">Name must have min 3 characters</div>
+                    <div *ngIf="name?.errors?.maxlength" class="alert alert-danger small-alert">Name must have max 12 characters</div>
                   </div>
                 </div>
 
@@ -40,8 +40,8 @@
                     <input type="text" class="form-control" id="exampleDatepicker1"  formControlName="surname" />
                   </div>
                   <div class="mt-2"  *ngIf="surname?.touched && surname?.invalid" >
-                    <div *ngIf="name?.errors?.required" class="alert alert-danger small-alert">Surname is required</div>
-                    <div *ngIf="name?.errors?.maxLength">Name must have max 15 characters</div>
+                    <div *ngIf="surname?.errors?.required" class="alert alert-danger small-alert">Surname is required</div>
+                    <div *ngIf="surname?.errors?.maxlength"  class="alert alert-danger small-alert">Surname must have max 15 characters</div>
                   </div>
                 </div>
 
@@ -56,7 +56,7 @@
                   </div>
                   <div *ngIf="email?.touched && email?.invalid" class="mt-2">
                     <div *ngIf="email?.errors?.required" class="alert alert-danger small-alert">Email is required</div>
-                    <div *ngIf="name?.errors?.email">Email must have @</div>
+                    <div *ngIf="name?.errors?.email"  class="alert alert-danger small-alert">Email must have @</div>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
@@ -91,12 +91,12 @@
               </div>
               <div class="row">
                 <div class="col-md-12 mb-3">
-                  <label for="workExperience">Work Experience</label>
+                  <label for="workExperience">Work Experience</label><br>
                   <textarea name="" id="" cols="68" rows="5" style="border-radius: 5px;"  formControlName="workExperience" ></textarea>
                 </div>
                 <div class="col-md-12 mb-3"  *ngIf="workExperience?.touched && workExperience?.invalid" >
                   <div *ngIf="workExperience?.errors?.required" class="alert alert-danger small-alert">Work Experience is required </div>
-                  <div *ngIf="workExperience?.errors?.maxLength" class="alert alert-danger small-alert">Work Experience must have max 200 characters</div>
+                  <div *ngIf="workExperience?.errors?.maxlength" class="alert alert-danger small-alert">Work Experience must have max 200 characters</div>
                 </div>
               </div>
               <button type="submit" class="btn btn-success btn-lg mb-1" (click)="add()">Submit</button>

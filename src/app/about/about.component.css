@@ -1,0 +1,32 @@
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  max-width: calc(100vh - 260px) !important;
+}
+
+.about-container h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.about-content {
+  margin-top: 30px;
+}
+
+.about-content .logo {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+
+
+/* Add additional styles as needed */

@@ -42,8 +42,8 @@ export class UserListComponent implements OnInit {
   {
     this.userService.getAllUsers().subscribe(res=>
       {
-        this.users = res
-        console.log(this.users)
+        this.users = res.filter((x:any) => x.role != 'Admin')
+        console.log(this.users, 'ok')
       },
       error =>
       {

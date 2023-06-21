@@ -118,6 +118,7 @@ export class UpdateScheduleComponent implements OnInit {
         this.service.getScheduleWithDrivers(this.id).subscribe(res=>
           {
             this.scheduleDetails = res[0]
+            console.log('cant save')
           },
           error=>
           {

@@ -1,6 +1,7 @@
 <nav class="d-flex  "  style="justify-content: space-between;">
   <ul class="nav justify-content-start d-flex ">
   <a class="nav-link active" [routerLink]="['']">Home</a>
+  <a class="nav-link active" [routerLink]="['about']">About</a>
   <a class="nav-link" [routerLink]="['schedule']" *ngIf="user?.role == 'Driver'">My Schedule</a>
   <a class="nav-link" [routerLink]="['add-schedule']" *ngIf="user?.role == 'Admin'">Add Schedule</a>
   <a class="nav-link" [routerLink]="['create-line']" *ngIf="user?.role == 'Admin'">Create Line</a>

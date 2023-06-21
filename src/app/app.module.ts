@@ -28,7 +28,8 @@ import { UpdateTravelComponent } from './update-travel/update-travel.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component'
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { AboutComponent } from './about/about.component'
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component'
     ForgotPasswordComponent,
     ChangePasswordComponent,
     NotFoundComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component'
     StoreModule.forRoot({user : userReducer}),
     RouterModule.forRoot([
     {path:'', component:HomeComponent},
+    {path:'about', component:AboutComponent},
     {path:'schedule', component:ScheduleComponent},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},

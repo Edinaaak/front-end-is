@@ -11,6 +11,7 @@
       <nav class="d-flex "  style="justify-content: space-between;">
         <ul class="nav justify-content-start d-flex ">
         <a class="nav-link active" [routerLink]="['']">Home</a>
+        <a class="nav-link active" [routerLink]="['about']">About</a>
         <a class="nav-link" [routerLink]="['schedule']"  *ngIf="user?.role == 'Driver'">My Schedule</a>
         <a class="nav-link" [routerLink]="['add-schedule']" *ngIf="user?.role == 'Admin'">Add Schedule</a>
         <a class="nav-link" [routerLink]="['create-line']" *ngIf="user?.role == 'Admin'">Create Line</a>
@@ -28,8 +29,10 @@
       </nav>
       <img [src]="imagePath" style="object-fit: cover;" alt="image desc">
     </div>
-
-    <h1 style="text-align: center;margin: 0px 50px 0px 50px;" class="mt-4 mb-5 ">This platform is designed exclusively for our dedicated team of administrators, drivers, and counter clerk</h1>
+    <h1 style="text-align: center;margin: 0px 50px 0px 50px;" class="mt-4 mb-5 ">
+      Welcome to Zen Bus Lines!</h1>
+    <h1 style="text-align: center;margin: 0px 50px 0px 50px;" class="mt-4 mb-5 ">
+      This platform is designed exclusively for our dedicated team of administrators, drivers and counter clerk</h1>
 
     <div class="cards d-flex justify-content-center mb-5">
 
@@ -57,15 +60,16 @@
       </div>
     </div>
     </div>
-    <div class="d-flex justify-content-center  mb-5 p-5" >
-      <div class="p-5 " style="text-align: justify;margin-left: 90px;">
+
+    <div class="d-flex justify-content-center p-5" id="text-card">
+      <div style="text-align: justify; margin: 100px;" class="card1">
         <h2>SEARCH FUNCTIONALITY</h2><br>
         You don't have to worry about which departures operate according to the summer timetable,
         which ones on holidays, and which ones on weekends. Simply select the date and approximate travel time,
          and "Polazak" will display the valid timetable for that day for all bus and train lines.
           If you only choose the name of the settlement during the search, the results will include
            all stations  in the selected settlement.</div>
-      <div class="p-5" style="text-align: justify;margin-right: 90px;">
+      <div  style="text-align: justify; margin: 100px;" class="card1">
         <h2 >SEARCH WITH TRANSFERS</h2><br>
         The team behind the "Polazak" website puts a lot of effort into connecting existing lines of different transport providers
          if there are no direct departures on the requested route. Users of the website are presented with options

@@ -28,6 +28,7 @@ export class TravelComponent implements OnInit {
   idSchedule : number = 0
   idBus : number = 0
   Success: boolean = false
+  Error : string = ""
   ngOnInit(): void {
     this.schService.getScheduleWithBusline().subscribe(res=>
       {
@@ -88,6 +89,8 @@ export class TravelComponent implements OnInit {
             error=>
             {
               console.log(error)
+              this.Error = error.error
+              this.Success = false
             })
             else
             alert("You have to choose bus and schedule")
@@ -97,5 +100,12 @@ export class TravelComponent implements OnInit {
         alert("You did not choose correct day");
       }
 
+  }
+  checkDate()
+  {
+    let date = new Date((document.getElementById('form2Example1') as HTMLInputElement).value);
+    var today = new Date();
+    if(date < today)
+      alert("You have to choose an upcoming date")
   }
 }

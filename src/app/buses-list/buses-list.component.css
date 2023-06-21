@@ -11,3 +11,27 @@ button:hover
 {
   background-color: rgb(153, 1, 1);
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.card {
+  flex-basis: 30%;
+  padding: 20px;
+  margin-bottom: 5%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767px) {
+  .card {
+    flex-basis: 45%;
+  }
+}

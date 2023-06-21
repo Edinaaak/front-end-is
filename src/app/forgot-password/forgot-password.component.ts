@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,8 +11,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private userService : UserService) { }
   resetForm = new FormGroup({
-    email : new FormControl()
+    email : new FormControl('', [Validators.email, Validators.required])
   })
+  get email()
+  {
+    return this.resetForm.get('email')
+  }
   ngOnInit(): void {}
 
   resetPass()

@@ -1,6 +1,19 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-12">
+        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mt-4">
+          <div class="mb-1">
+            <select class="form-select form-select-lg" name="" id="id" (change)="filterTravel()" >
+              <option selected>Select Date</option>
+              <option *ngFor="let date of dates" value="{{date}}">{{date}}</option>
+            </select>
+          </div>
+
+        </div>
+    </div>
+</div>
     <div class="row">
         <div class="col-12 mb-3 mb-lg-5 mt-5">
             <div class="overflow-hidden card table-nowrap table-card">
@@ -17,14 +30,24 @@
                                 <th>Date</th>
                             </tr>
                         </thead>
-                        <tbody >
-                          <tr class="align-middle" *ngFor="let travel of travels">
+                        <tbody  *ngIf="travelsFilter.length > 0; else noFilter">
+                          <tr class="align-middle" *ngFor="let travel of travelsFilter">
                               <td><b>{{travel?.travel?.schedule?.busLine?.fromCity}} - {{travel?.travel?.schedule?.busLine?.toCity}}</b></td>
                               <td>{{travel?.travel?.schedule?.arrivalTime}}</td>
                               <td>{{travel?.travel?.schedule?.departureTime}}</td>
                               <td>{{getDate(travel?.travel?.travelDate)}}</td>
                           </tr>
                       </tbody>
+                      <ng-template #noFilter>
+                      <tbody >
+                        <tr class="align-middle" *ngFor="let travel of travels">
+                            <td><b>{{travel?.travel?.schedule?.busLine?.fromCity}} - {{travel?.travel?.schedule?.busLine?.toCity}}</b></td>
+                            <td>{{travel?.travel?.schedule?.arrivalTime}}</td>
+                            <td>{{travel?.travel?.schedule?.departureTime}}</td>
+                            <td>{{getDate(travel?.travel?.travelDate)}}</td>
+                        </tr>
+                    </tbody>
+                  </ng-template>
                     </table>
                 </div>
             </div>

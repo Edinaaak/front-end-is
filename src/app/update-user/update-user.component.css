@@ -8,3 +8,10 @@ label
   margin-top: 10px;
   font-size: large;
 }
+
+
+
+.small-alert {
+  padding: 5px;
+  font-size: 12px;
+}

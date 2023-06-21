@@ -27,7 +27,6 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div class="">
                 <div class="table-responsive" >
                     <table class="table project-list-table table-nowrap align-middle table-borderless">
                         <thead>
@@ -39,7 +38,7 @@
                                 <th scope="col" >Action</th>
                             </tr>
                         </thead>
-                        <tbody *ngIf="usersFilter.length > 0;else noFilter"  style="overflow-y: scroll; max-height: 450px; " >
+                        <tbody *ngIf="usersFilter.length > 0;else noFilter"  style="overflow-y: scroll; max-height: 350px; " >
                             <tr *ngFor="let user of usersFilter">
                                 <td><a href="#" class="text-body">{{user?.name}}  {{user?.surname}}</a></td>
                                 <td><span class="badge badge-soft-success mb-0">{{user?.role}}</span></td>
@@ -58,7 +57,7 @@
                             </tr>
                         </tbody>
                         <ng-template #noFilter>
-                        <tbody style="overflow-y: scroll; max-height: 450px;">
+                        <tbody style="overflow-y: scroll; max-height: 350px;">
                             <tr *ngFor="let user of users">
                                 <td><a href="#" class="text-body">{{user?.name}}  {{user?.surname}}</a></td>
                                 <td><span class="badge badge-soft-success mb-0">{{user?.role}}</span></td>
@@ -79,7 +78,6 @@
                       </ng-template>
                     </table>
                 </div>
-            </div>
         </div>
     </div>
     <div class="row align-items-center">
@@ -99,7 +97,6 @@
   </div>
     <div class="row">
       <div class="col-lg-12">
-          <div class="">
               <div class="table-responsive" >
                   <table class="table project-list-table table-nowrap align-middle table-borderless">
                       <thead>
@@ -111,7 +108,7 @@
                           </tr>
                       </thead>
 
-                      <tbody *ngIf="buslinesFilter.length > 0; else noFilter2" >
+                      <tbody *ngIf="buslinesFilter.length > 0; else noFilter2" style="overflow-y: scroll; max-height: 350px; "  >
                           <tr *ngFor="let busline of buslinesFilter">
                               <td>{{busline?.fromCity}} - {{busline?.toCity}}</td>
                               <td><span class="badge badge-soft-success mb-0">{{(busline?.creationDate).toUpperCase()}}</span></td>
@@ -127,7 +124,7 @@
                           </tr>
                       </tbody>
                       <ng-template #noFilter2>
-                      <tbody>
+                      <tbody style="overflow-y: scroll; max-height: 350px; " >
                         <tr *ngFor="let busline of buslines">
                             <td>{{busline?.fromCity}} - {{busline?.toCity}}</td>
                             <td><span class="badge badge-soft-success mb-0">{{(busline?.creationDate).toUpperCase()}}</span></td>
@@ -145,7 +142,6 @@
                   </ng-template>
                   </table>
               </div>
-          </div>
       </div>
   </div>
   <div class="row align-items-center">
@@ -184,7 +180,7 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="schedulesFilter.length > 0; else noFilter3">
+                    <tbody *ngIf="schedulesFilter.length > 0; else noFilter3" style="overflow-y: scroll; max-height: 350px; " >
                       <tr *ngFor="let schedule of schedulesFilter">
                           <td>{{schedule?.busLine?.fromCity}} - {{schedule?.busLine?.toCity}}</td>
                           <td><a href="#" class="text-body">{{schedule?.arrivalTime}}h - {{schedule?.departureTime}}h</a></td>
@@ -203,7 +199,7 @@
                       </tr>
                   </tbody>
                     <ng-template #noFilter3>
-                    <tbody>
+                    <tbody style="overflow-y: scroll; max-height: 350px; " >
                         <tr *ngFor="let schedule of schedules">
                             <td>{{schedule?.busLine?.fromCity}} - {{schedule?.busLine?.toCity}}</td>
                             <td><a href="#" class="text-body">{{schedule?.arrivalTime}}h - {{schedule?.departureTime}}h</a></td>
@@ -260,7 +256,7 @@
                           <th scope="col">Action</th>
                       </tr>
                   </thead>
-                  <tbody *ngIf="travelsFilter.length > 0; else noFilter4">
+                  <tbody *ngIf="travelsFilter.length > 0; else noFilter4" style="overflow-y: scroll; max-height: 350px; " >
                     <tr *ngFor="let travel of travelsFilter">
                       <td><b>{{travel?.schedule?.busLine?.fromCity}} - {{travel?.schedule?.busLine?.toCity}}</b></td>
                       <td>{{travel?.schedule?.arrivalTime}}</td>
@@ -280,7 +276,7 @@
                     </tr>
                 </tbody>
                 <ng-template #noFilter4>
-                  <tbody>
+                  <tbody style="overflow-y: scroll; max-height: 350px; " >
                       <tr *ngFor="let travel of travels">
                         <td><b>{{travel?.schedule?.busLine?.fromCity}} - {{travel?.schedule?.busLine?.toCity}}</b></td>
                         <td>{{travel?.schedule?.arrivalTime}}</td>

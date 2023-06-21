@@ -32,3 +32,10 @@ label
 {
   font-size: large;
 }
+@media (max-width:768px)
+{
+  form
+  {
+    width: 100%;
+  }
+}

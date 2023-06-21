@@ -19,15 +19,33 @@ export class UpdateUserComponent implements OnInit {
   idUser : any = {}
   user : any = {}
   userFromStorage : User  = {} as User
+  Error : string = ""
+  passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   updateForm = new FormGroup(
     {
-      name : new FormControl('', Validators.required),
-      surname : new FormControl('', Validators.required),
+      name : new FormControl('',[ Validators.required, Validators.minLength(3),Validators.maxLength(15)]),
+      surname : new FormControl('', [Validators.required,  Validators.minLength(3),Validators.maxLength(20)]),
       password : new FormControl('', Validators.required),
-      newPassword : new FormControl('', Validators.required),
+      newPassword : new FormControl('', [Validators.pattern(this.passwordPattern)]),
       employmentDate : new FormControl('', Validators.required),
     }
   )
+  get name ()
+  {
+    return this.updateForm.get('name')
+  }
+  get surname ()
+  {
+    return this.updateForm.get('surname')
+  }
+  get newPassword ()
+  {
+    return this.updateForm.get('newPassword')
+  }
+  get employmentDate ()
+  {
+    return this.updateForm.get('employmentDate')
+  }
   ngOnInit(): void {
 
     this.router.paramMap.subscribe(res =>
@@ -73,6 +91,7 @@ export class UpdateUserComponent implements OnInit {
       error=>
       {
         console.log(error)
+        this.Error = error.error
       })
   }
 

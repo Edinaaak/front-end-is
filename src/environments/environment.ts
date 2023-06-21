@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL: "https://localhost:7111/api/"
+  URL: "http://busline-001-site1.atempurl.com/api/"
 };
 
 /*

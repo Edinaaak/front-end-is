@@ -4,6 +4,7 @@ import { BusService } from '../bus.service';
 import { TravelService } from '../travel.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-update-travel',
@@ -13,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UpdateTravelComponent implements OnInit {
 
   constructor(private schService : ScheduleService, private busService : BusService,
-    private travelService : TravelService, private router:ActivatedRoute) { }
+    private travelService : TravelService, private router:ActivatedRoute, private datePipe:DatePipe) { }
   travel : any = {}
   schedule : any = {}
   days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -30,6 +31,7 @@ export class UpdateTravelComponent implements OnInit {
   idTravel : any = {}
   idBus : number = 0
   Success: boolean = false
+  Error : string = ""
   ngOnInit(): void {
 
     this.router.paramMap.subscribe(res=>
@@ -41,6 +43,7 @@ export class UpdateTravelComponent implements OnInit {
       {
         this.travel = res
         console.log(res)
+        this.formLine.get('date')?.setValue(this.datePipe.transform(this.travel.travelDate, 'yyyy-MM-dd'))
         this.schService.getById(this.travel.scheduleId).subscribe(res=>
           {
             this.schedule = res
@@ -93,6 +96,7 @@ export class UpdateTravelComponent implements OnInit {
             },
             error=>
             {
+              this.Error = error.error
               console.log(error)
             })
             else
@@ -103,6 +107,16 @@ export class UpdateTravelComponent implements OnInit {
         alert("You did not choose correct day");
       }
 
+  }
+
+  checkDate()
+  {
+    let date = new Date((document.getElementById('form2Example1') as HTMLInputElement).value)
+    let today = new Date();
+    if(date < today)
+    {
+        alert("You have to choose upcoming date")
+    }
   }
 
 }
