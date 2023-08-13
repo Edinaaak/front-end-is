@@ -34,6 +34,11 @@
       <h3 style="text-align: center;" class="mt-4">Reserve ticket</h3>
       <div class="card-body">
         <form action="">
+          <div class="row" *ngIf="Error !== ''">
+            <div class="col-md-12 mg-4">
+              <p class="alert alert-danger">{{Error}}</p>
+            </div>
+          </div>
           <div class="mb-3">
             <label for="" class="form-label mt-4">Number of ticket</label>
             <input type="text"

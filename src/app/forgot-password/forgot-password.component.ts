@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private router:Router) { }
   resetForm = new FormGroup({
     email : new FormControl('', [Validators.email, Validators.required])
   })
@@ -24,7 +25,8 @@ export class ForgotPasswordComponent implements OnInit {
 
       this.userService.forgotPassword(this.resetForm.get('email')?.value).subscribe(res=>
         {
-          console.log(res)
+        console.log(res)
+        this.router.navigate(['login'])
         },
         error=>
         {

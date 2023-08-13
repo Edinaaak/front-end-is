@@ -12,6 +12,11 @@
      Added successfully!
     </div>
   </div>
+  <div class="alert alert-danger d-flex justify-content-center" *ngIf="Error!=''">
+    <div style="text-align: center;">
+    {{Error}}
+    </div>
+  </div>
   <div class="form-outline mb-4">
     <label class="form-label" for="form2Example1">From city</label>
     <input type="text" id="form2Example1" class="form-control" formControlName="fromCity" />

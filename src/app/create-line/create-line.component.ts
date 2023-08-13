@@ -20,6 +20,7 @@ export class CreateLineComponent implements OnInit {
     agency : new FormControl('', Validators.required),
   })
   Success : boolean = false
+  Error :string = ""
   ngOnInit(): void {
   }
   get fromCity()
@@ -62,12 +63,14 @@ export class CreateLineComponent implements OnInit {
     this.buslineService.addBusline(line).subscribe(res=>
       {
        console.log("dodatoo", res)
-       this.Success = true
+       this.Success = true;
+       this.Error = '';
       },
       error=>
       {
         console.log(error)
         this.Success = false
+        this.Error = "Fields are invalid."
       })
 
 

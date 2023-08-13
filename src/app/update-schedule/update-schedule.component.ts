@@ -16,6 +16,7 @@ export class UpdateScheduleComponent implements OnInit {
   id: any = "";
   scheduleDetails : any = {}
   driverList : any = []
+  Error : string = ""
   maxSelections = 2;
   checkboxes: { id: string, value: string, checked: boolean, disabled: boolean }[] = [];
   formSchedule = new FormGroup({
@@ -97,10 +98,12 @@ export class UpdateScheduleComponent implements OnInit {
       {
         console.log("updated")
         this.routerNav.navigate(['user-list'])
+        this.Error = ''
       },
       error=>
       {
         console.log(error)
+        this.Error = error.error + ". She/he is busy"
       }
     )
 

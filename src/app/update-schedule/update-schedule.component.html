@@ -15,6 +15,11 @@
     <div class="card-body">
       <h3 class="card-title mt-3" style="text-align: center;">Update Schedule!</h3>
       <form action="" [formGroup]="formSchedule">
+        <div class="row" *ngIf="Error !== ''">
+          <div class="col-md-12 mg-4">
+            <p class="alert alert-danger">{{Error}}</p>
+          </div>
+        </div>
         <div class="mb-3">
           <label for="" class="form-label">Arrival Time</label>
           <input type="time"

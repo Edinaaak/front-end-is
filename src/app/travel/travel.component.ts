@@ -85,6 +85,7 @@ export class TravelComponent implements OnInit {
             {
               console.log(res)
               this.Success = res
+              this.Error = ''
             },
             error=>
             {

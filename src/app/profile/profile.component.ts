@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { User } from '../interfaces/User';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { logout } from '../store/actions/user.actions';
 
 @Component({
   selector: 'app-profile',
@@ -32,6 +33,7 @@ export class ProfileComponent implements OnInit {
     {
     this.userService.deleteUser(id).subscribe(res=>
       {
+        this.store.dispatch(logout())
         console.log(res)
       },
       error=>

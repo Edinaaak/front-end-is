@@ -17,6 +17,7 @@ export class DetailsTravelComponent implements OnInit {
   freeSeats : number = 0
   seatNum : string = "Empty"
   amount : number = 0
+  Error : string = ""
   ngOnInit(): void {
     this.route.paramMap.subscribe(res=>
       {
@@ -55,11 +56,13 @@ export class DetailsTravelComponent implements OnInit {
         this.ticketService.getSeats(this.idTravel).subscribe(res=>
           {
             this.freeSeats = res
+            this.Error = ''
           })
       },
       error =>
       {
         console.log(error)
+        this.Error = 'there are no more free seats'
       })
   }
 
